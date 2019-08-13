@@ -4,7 +4,7 @@ RUN apt-get -y update --fix-missing
 RUN apt-get upgrade -y
 
 # Install important libraries
-RUN apt-get -y install --fix-missing apt-utils build-essential git curl libcurl4 libcurl4-dev zip
+RUN apt-get -y install --fix-missing apt-utils build-essential git curl  zip
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -28,10 +28,10 @@ RUN apt-get -y install libicu-dev
 RUN docker-php-ext-install -j$(nproc) intl
 
 RUN docker-php-ext-install mbstring
-#RUN docker-php-ext-install xsl
+RUN docker-php-ext-install xsl
 RUN apt-get install -y libxslt-dev
 RUN docker-php-ext-install xsl
-#RUN docker-php-ext-install soap
+RUN docker-php-ext-install soap
 RUN apt-get install -y libxml2-dev
 RUN docker-php-ext-install soap
 RUN docker-php-ext-install bcmath
